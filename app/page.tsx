@@ -92,8 +92,7 @@ const TranscriptionUploader: React.FC = () => {
       const data = await response.json();
       setTranscription(data.transcription);
     } catch (error) {
-      console.error('Transcription failed', error);
-      setTranscription('Transcription failed');
+      setTranscription(`Transcription failed => ${error}`);
     } finally {
       setLoading(false);
     }

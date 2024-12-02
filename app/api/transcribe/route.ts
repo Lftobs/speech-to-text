@@ -1,6 +1,16 @@
 import { TranscriptionService } from '@/app/lib/transcripition';
 import { NextRequest, NextResponse } from 'next/server';
 
+export async function OPTIONS() {
+  return NextResponse.json({}, {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type',
+    },
+  });
+}
+
 export async function POST(request: NextRequest) {
 
   const formData = await request.formData();
@@ -22,6 +32,6 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(result);
   } catch (error) {
     console.error('Transcription error:', error);
-    return NextResponse.json({ error: 'Transcription failed' }, { status: 500 });
+    return NextResponse.json({ error: error}, { status: 500 });
   }
 }
