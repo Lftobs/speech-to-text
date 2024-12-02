@@ -80,7 +80,7 @@ const TranscriptionUploader: React.FC = () => {
 
     setLoading(true);
     try {
-      const response = await fetch('https://speech-to-text-tau-three.vercel.app/api/transcribe', {
+      const response = await fetch('/api/transcribe', {
         method: 'POST',
         body: formData
       });
